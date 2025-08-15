@@ -1,310 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Janmashtami</title>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: radial-gradient(#0b0f2a, #1a1f47);
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-family: Arial, sans-serif;
-        color: white;
-    }
-
-    /* Stars Animation */
-    .stars {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        animation: twinkle 2s infinite alternate;
-    }
-
-    @keyframes twinkle {
-        from { opacity: 0.2; }
-        to { opacity: 1; }
-    }
-
-    h1 {
-        margin-top: 20px;
-        font-size: 2.5em;
-        text-shadow: 2px 2px 8px #ffd700;
-        z-index: 2;
-    }
-
-    .container {
-        position: relative;
-        width: 70%;
-        height: 70%;
-        z-index: 2;
-    }
-
-    .handi {
-        position: absolute;
-        top: 50px;
-        left: 50%;
-        transform: translateX(-60px);
-        width: 130px;
-        animation: swing 2s ease-in-out infinite alternate;
-        cursor: pointer;
-        z-index: 3;
-    }
-
-    .krishna {
-        position: absolute;
-        bottom: 20px;
-        left: 52%;
-        transform: translateX(-50%);
-        width: 200px;
-        transition: bottom 0.5s ease;
-        z-index: 2;
-    }
-
-    @keyframes swing {
-        0% { transform: translateX(-60px) rotate(-5deg); }
-        100% { transform: translateX(-60px) rotate(5deg); }
-    }
-
-    .milk {
-        position: absolute;
-        top: 100px;
-        left: 53%;
-        transform: translateX(-50%);
-        width: 10px;
-        height: 0;
-        background: rgb(233, 232, 232);
-        border-radius: 5px;
-        transition: height 0.8s ease;
-        z-index: 1;
-    }
-
-    .confetti {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        animation: fall 3s linear forwards;
-    }
-
-    @keyframes fall {
-        0% { transform: translateY(0) rotate(0); opacity: 1; }
-        100% { transform: translateY(800px) rotate(720deg); opacity: 0; }
-    }
-
-    .quotes {
-        margin-top: 20px;
-        font-size: 1.2em;
-        text-align: center;
-        max-width: 80%;
-        line-height: 1.5em;
-        min-height: 50px;
-        z-index: 2;
-    }
-
-    .footer {
-        margin-top: 10px;
-        font-size: 1em;
-        font-weight: bold;
-        color: rgb(234, 63, 171);
-        z-index: 2;
-    }
-
-    /* Side Images */
-    .side-image {
-        position: absolute;
-        bottom: 20px;
-        width: 180px;
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(255,255,255,0.6);
-        border: 2px solid gold;
-        z-index: 2;
-    }
-
-    .side-image.left {
-        left: 10px;
-    }
-
-    .side-image.right {
-        right: 10px;
-    }
-
-
-
-
-
-
-   .music-controls {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 8px;
-    border-radius: 12px;
-}
-
-#songSelector {
-    padding: 5px;
-    border-radius: 8px;
-    border: none;
-    font-size: 0.9em;
-}
-
-.music-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9em;
-    background-color: gold;
-    transition: background 0.3s;
-}
-
-.music-btn:hover {
-    background-color: orange;
-}
-
-
-</style>
-</head>
-<body>
-
-<!-- Stars Layer -->
-<script>
-    for (let i = 0; i < 80; i++) {
-        let star = document.createElement("div");
-        star.className = "stars";
-        star.style.top = Math.random() * window.innerHeight + "px";
-        star.style.left = Math.random() * window.innerWidth + "px";
-        star.style.animationDuration = (1 + Math.random() * 2) + "s";
-        document.body.appendChild(star);
-    }
-</script>
-
-<h1>🌸 Happy Janmashtami 🌸</h1>
-
-<div class="container">
-    <img src="handi.png" class="handi" id="handi" alt="Handi">
-    <div class="milk" id="milk"></div>
-    <img src="Krishna.png" class="krishna" id="krishna" alt="Krishna">
-</div>
-
-
-
-
-<!-- Music Player UI -->
-<div class="music-controls">
-    <select id="songSelector">
-        <option value="flute1.mp3">Flute - Peaceful</option>
-        <option value="flute2.mp3">Flute - Joyful</option>
-        <option value="f3.mp3">Bhajan1</option>
-        <option value="f4.mp3">Bhajan2</option>
-        <option value="f5.mp3">Bhajan3</option>
-        <option value="f6.mp3">Bhajan4</option>
-        <option value="f7.mp3">Bhajan5</option>
-    </select>
-    <button class="music-btn" id="playBtn">▶ Play</button>
-    <button class="music-btn" id="pauseBtn">⏸ Pause</button>
-</div>
-
-
-
-
-
-<!-- Left Side Image -->
-<img src="rada1.png" alt="Radha" class="side-image left">
-<!-- Right Side Image -->
-<img src="rada2.png" alt="Radha Krishna" class="side-image right">
-
-<div class="quotes" id="quotes"></div>
-<div class="footer">Made by Nikhil for Shree ❤️</div>
-
-<audio id="fluteMusic" src="flute.mp3" loop></audio>
-
-<script>
-    const handi = document.getElementById('handi');
-    const milk = document.getElementById('milk');
-    const krishna = document.getElementById('krishna');
-    const fluteMusic = document.getElementById('fluteMusic');
-    const quotesEl = document.getElementById('quotes');
-
-    const quotes = [
-        "“You have the right to work, but never to the fruit of work.” – Lord Krishna",
-        "“Change is the law of the universe.” – Lord Krishna",
-        "“A person can rise through the efforts of his own mind.” – Lord Krishna",
-        "“Do your duty, without thinking about results.” – Lord Krishna",
-        "“When meditation is mastered, the mind is unwavering.” – Lord Krishna"
-    ];
-
-    let quoteIndex = 0;
-
-    function showQuotes() {
-        quotesEl.textContent = quotes[quoteIndex];
-        quoteIndex = (quoteIndex + 1) % quotes.length;
-    }
-    setInterval(showQuotes, 4000);
-    showQuotes();
-
-    window.addEventListener('click', () => {
-        fluteMusic.play();
-    }, { once: true });
-
-    handi.addEventListener('click', () => {
-        krishna.style.bottom = "150px";
-
-        setTimeout(() => {
-            milk.style.height = "200px";
-        }, 500);
-
-        for (let i = 0; i < 50; i++) {
-            let confetti = document.createElement("div");
-            confetti.classList.add("confetti");
-            confetti.style.left = Math.random() * window.innerWidth + "px";
-            confetti.style.backgroundColor = ["red", "yellow", "green", "blue", "pink"][Math.floor(Math.random() * 5)];
-            document.body.appendChild(confetti);
-
-            setTimeout(() => {
-                confetti.remove();
-            }, 3000);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Janmashtami Dahi Handi Celebration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(#0b0f2a, #1a1f47);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            touch-action: manipulation;
         }
 
-        setTimeout(() => {
-            krishna.style.bottom = "20px";
-            milk.style.height = "0";
-        }, 2000);
-    });
+        /* Stars Animation */
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: twinkle 2s infinite alternate;
+        }
 
+        @keyframes twinkle {
+            from { opacity: 0.2; }
+            to { opacity: 1; }
+        }
 
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .handi {
+            width: 200px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 3;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
 
+        .cursor-area {
+            position: absolute;
+            width: 76px;
+            height: 70px;
+            top: 111px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: -38px;
+            cursor: url('https://www.codewithfaraz.com/project_images/dahi_handi/coconut.png'), auto;
+            background-color: transparent;
+            z-index: 4;
+        }
 
+        .broken-handi {
+            width: 200px;
+            height: auto;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(200px);
+            opacity: 0;
+            z-index: 5;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
 
- let currentSong = new Audio();
-const songSelector = document.getElementById("songSelector");
-const playBtn = document.getElementById("playBtn");
-const pauseBtn = document.getElementById("pauseBtn");
+        .handi-break {
+            animation: breakHandi 0.6s forwards ease-in-out;
+        }
 
-playBtn.addEventListener("click", () => {
-    currentSong.src = songSelector.value;
-    currentSong.loop = true;
-    currentSong.play();
-});
+        .show-broken-handi {
+            animation: showBrokenHandi 2.5s forwards ease-in-out;
+        }
 
-pauseBtn.addEventListener("click", () => {
-    currentSong.pause();
-});
+        @keyframes breakHandi {
+            0% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px) rotate(10deg); }
+            100% { transform: translateX(-50%) translateY(100px) rotate(-45deg); opacity: 0; }
+        }
 
-</script>
+        @keyframes showBrokenHandi {
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
 
+        .pot-piece {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background-color: #bd3a1e;
+            border: 2px solid #bd3a1e;
+            transform-style: preserve-3d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .piecefall {
+            animation: piecefall 3s forwards;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes piecefall {
+            0% { transform: translateY(-150%) rotate(var(--rotate)); opacity: 0; }
+            20% { opacity: 1; }
+            70% { opacity: 0; }
+            100% { transform: translateY(100vh) rotate(var(--rotate-end)); opacity: 0; }
+        }
+
+        /* Pieces positioning */
+        .piece1 { --delay: 0.1s; --rotate: 0deg; --rotate-end: 90deg; left: 10%; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+        .piece2 { --delay: 0.15s; --rotate: 15deg; --rotate-end: 180deg; left: 25%; clip-path: polygon(50% 0%, 80% 20%, 60% 100%, 0% 50%); }
+        .piece3 { --delay: 0.2s; --rotate: -20deg; --rotate-end: 270deg; left: 40%; clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%); }
+        .piece4 { --delay: 0.25s; --rotate: 30deg; --rotate-end: 360deg; left: 55%; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 50%); }
+        .piece5 { --delay: 0.3s; --rotate: -45deg; --rotate-end: 450deg; left: 70%; clip-path: polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%); }
+        .piece6 { --delay: 0.35s; --rotate: 60deg; --rotate-end: 540deg; left: 80%; clip-path: polygon(40% 0%, 100% 20%, 80% 100%, 0% 80%); }
+        .piece7 { --delay: 0.4s; --rotate: -90deg; --rotate-end: 630deg; left: 20%; clip-path: polygon(20% 0%, 100% 50%, 80% 100%, 0% 50%); }
+        .piece8 { --delay: 0.45s; --rotate: 120deg; --rotate-end: 720deg; left: 35%; clip-path: polygon(30% 0%, 100% 50%, 50% 100%, 0% 80%); }
+        .piece9 { --delay: 0.5s; --rotate: -150deg; --rotate-end: 810deg; top: 10%; left: 50%; clip-path: polygon(50% 0%, 100% 50%, 80% 100%, 0% 50%); }
+        .piece10 { --delay: 0.55s; --rotate: 180deg; --rotate-end: 900deg; top: 20%; left: 35%; clip-path: polygon(0 0, 100% 20%, 50% 100%, 0% 50%); }
+
+        .curd {
+            background: transparent;
+            width: 110%;
+            height: 20%;
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .curd-drop {
+            background: #f4e9d8;
+            position: absolute;
+            left: 50%;
+            bottom: 500%;
+            border-radius: 0 50% 50%;
+            transform: translateX(-50%) rotate(45deg);
+            opacity: 0;
+        }
+        .curd-drop:nth-child(1) { width: 50px; height: 50px; animation-delay: 0.1875s; }
+        .curd-drop:nth-child(2) { width: 35px; height: 35px; animation-delay: 0.375s; }
+        .curd-drop:nth-child(3) { width: 25px; height: 25px; animation-delay: 0.5625s; }
+        .curd-drop:nth-child(4) { width: 15px; height: 15px; animation-delay: 0.65s; }
+
+        .curdfall {
+            animation: curdfall 2s ease-in forwards;
+            opacity: 1 !important;
+        }
+
+        @keyframes curdfall {
+            0% { bottom: 500%; opacity: 1; }
+            50% { bottom: -100px; opacity: 1; }
+            100% { bottom: -200px; opacity: 0; }
+        }
+
+        .happy-janmashtami {
+            position: absolute;
+            width: max-content;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            opacity: 0;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .textAnimate {
+            animation: fadeInText 2s forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translate(-50%, -40%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); text-shadow: 0 0 10px #ff9933, 0 0 20px #ff9933, 0 0 30px #ff9933; }
+        }
+
+        /* Footer with signature */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff69b4;
+            font-size: 1rem;
+            z-index: 10;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Side Images */
+        .side-image {
+            position: absolute;
+            width: clamp(100px, 25vw, 180px);
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            border: 2px solid gold;
+            z-index: 2;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .side-image {
+                display: block;
+            }
+            .side-image.left {
+                left: 10px;
+                bottom: 10%;
+            }
+            .side-image.right {
+                right: 10px;
+                bottom: 10%;
+            }
+        }
+
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px;
+            border-radius: 12px;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        @media (min-width: 480px) {
+            .music-controls {
+                flex-direction: row;
+            }
+        }
+
+        #songSelector {
+            padding: 5px;
+            border-radius: 8px;
+            border: none;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            max-width: 120px;
+            background: white;
+        }
+
+        .music-btn {
+            padding: 5px 8px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            background-color: gold;
+            transition: background 0.3s;
+            min-width: 60px;
+        }
+
+        .music-btn:hover {
+            background-color: orange;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .handi, .broken-handi {
+                width: 150px;
+            }
+            .cursor-area {
+                width: 57px;
+                height: 52px;
+                top: 83px;
+                margin-left: -28px;
+            }
+            .footer {
+                font-size: 0.8rem;
+                bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars will be added by JavaScript -->
+    
+    <!-- Side Images - Replace with your Radha/Krishna images -->
+    <img src="rada1.png" alt="Radha" class="side-image left">
+    <img src="rada2.png" alt="Radha Krishna" class="side-image right">
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <select id="songSelector">
+            <option value="flute1.mp3">Flute - Peaceful</option>
+            <option value="flute2.mp3">Flute - Joyful</option>
+            <option value="f3.mp3">Bhajan 1</option>
+            <option value="f4.mp3">Bhajan 2</option>
+            <option value="f5.mp3">Bhajan 3</option>
+            <option value="f6.mp3">Bhajan 4</option>
+            <option value="f7.mp3">Bhajan 5</option>
+        </select>
+        <button class="music-btn" id="playBtn">▶ Play</button>
+        <button class="music-btn" id="pauseBtn">⏸ Pause</button>
+    </div>
+
+    <div class="container">
+        <!-- Pot pieces -->
+        <div class="pot-piece piece1"></div>
+        <div class="pot-piece piece2"></div>
+        <div class="pot-piece piece3"></div>
+        <div class="pot-piece piece4"></div>
+        <div class="pot-piece piece5"></div>
+        <div class="pot-piece piece6"></div>
+        <div class="pot-piece piece7"></div>
+        <div class="pot-piece piece8"></div>
+        <div class="pot-piece piece9"></div>
+        <div class="pot-piece piece10"></div>
+
+        <!-- Main Handi -->
+        <img src="https://www.codewithfaraz.com/project_images/dahi_handi/handi.png" alt="Handi" class="handi" id="handi">
+
+        <!-- Clickable area -->
+        <div id="cursor-area" class="cursor-area"></div>
+
+        <!-- Broken Handi -->
+        <img src="https://www.codewithfaraz.com/project_images/dahi_handi/broken_handi.png" alt="Broken Handi" class="broken-handi" id="brokenHandi"/>
+
+        <!-- Curd drops -->
+        <div class="curd">
+            <div class="curd-drop"></div>
+            <div class="curd-drop"></div>
+            <div class="curd-drop"></div>
+            <div class="curd-drop"></div>
+        </div>
+
+        <!-- Celebration text -->
+        <div class="happy-janmashtami" id="janmashtamiText">
+            Happy Janmashtami!
+        </div>
+    </div>
+
+    <!-- Signature line -->
+    <div class="footer">Made by Nikhil for Shree ❤️</div>
+
+    <script>
+        // Create stars
+        const starCount = window.innerWidth < 768 ? 50 : 100;
+        for (let i = 0; i < starCount; i++) {
+            let star = document.createElement("div");
+            star.className = "stars";
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.animationDuration = (1 + Math.random() * 2) + "s";
+            star.style.animationDelay = Math.random() * 2 + "s";
+            document.body.appendChild(star);
+        }
+
+        // DOM elements
+        const handi = document.getElementById('handi');
+        const brokenHandi = document.getElementById('brokenHandi');
+        const potPieces = document.querySelectorAll('.pot-piece');
+        const curdDrops = document.querySelectorAll('.curd-drop');
+        const janmashtamiText = document.getElementById('janmashtamiText');
+        const cursorArea = document.getElementById('cursor-area');
+
+        // Break handi function
+        function breakHandi() {
+            console.log("Breaking handi...");
+            
+            // Add breaking animation to handi
+            handi.classList.add('handi-break');
+            
+            // Show broken handi
+            brokenHandi.classList.add('show-broken-handi');
+            
+            // Animate all pot pieces
+            potPieces.forEach(piece => {
+                piece.style.opacity = '1';
+                piece.classList.add('piecefall');
+            });
+            
+            // Animate all curd drops
+            curdDrops.forEach(drop => {
+                drop.style.opacity = '1';
+                drop.classList.add('curdfall');
+            });
+            
+            // Hide cursor area after animation starts
+            setTimeout(() => {
+                cursorArea.style.display = 'none';
+            }, 1000);
+            
+            // Show celebration text
+            janmashtamiText.classList.add('textAnimate');
+            
+            // Reset after 5 seconds
+            setTimeout(resetAnimation, 5000);
+        }
+
+        // Reset animation
+        function resetAnimation() {
+            console.log("Resetting animation...");
+            
+            // Reset handi
+            handi.classList.remove('handi-break');
+            handi.style.transform = 'translateX(-50%)';
+            handi.style.opacity = '1';
+            
+            // Reset broken handi
+            brokenHandi.classList.remove('show-broken-handi');
+            brokenHandi.style.opacity = '0';
+            brokenHandi.style.transform = 'translateX(-50%) translateY(200px)';
+            
+            // Reset pot pieces
+            potPieces.forEach(piece => {
+                piece.classList.remove('piecefall');
+                piece.style.opacity = '0';
+                // Reset transform for pieces
+                piece.style.transform = '';
+            });
+            
+            // Reset curd drops
+            curdDrops.forEach(drop => {
+                drop.classList.remove('curdfall');
+                drop.style.bottom = '500%';
+                drop.style.opacity = '0';
+            });
+            
+            // Reset text
+            janmashtamiText.classList.remove('textAnimate');
+            janmashtamiText.style.opacity = '0';
+            janmashtamiText.style.transform = 'translate(-50%, -50%)';
+            
+            // Show cursor area again
+            cursorArea.style.display = 'block';
+        }
+
+        // Event listeners for breaking handi
+        cursorArea.addEventListener('click', function(e) {
+            e.preventDefault();
+            breakHandi();
+        });
+        
+        cursorArea.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            breakHandi();
+        });
+
+        // Also make the handi itself clickable as a fallback
+        handi.addEventListener('click', function(e) {
+            e.preventDefault();
+            breakHandi();
+        });
+        
+        handi.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            breakHandi();
+        });
+
+        // Music player functionality
+        let currentSong = new Audio();
+        const songSelector = document.getElementById("songSelector");
+        const playBtn = document.getElementById("playBtn");
+        const pauseBtn = document.getElementById("pauseBtn");
+
+        playBtn.addEventListener("click", () => {
+            currentSong.src = songSelector.value;
+            currentSong.loop = true;
+            currentSong.play().catch(e => console.log("Play failed:", e));
+        });
+
+        pauseBtn.addEventListener("click", () => {
+            currentSong.pause();
+        });
+
+        // Handle first interaction for audio
+        function handleFirstInteraction() {
+            if (currentSong.paused) {
+                currentSong.src = songSelector.value;
+                currentSong.loop = true;
+                currentSong.play().catch(e => console.log("Autoplay prevented:", e));
+            }
+            window.removeEventListener('click', handleFirstInteraction);
+            window.removeEventListener('touchstart', handleFirstInteraction);
+        }
+
+        window.addEventListener('click', handleFirstInteraction, { once: true });
+        window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 600) {
+                cursorArea.style.top = '83px';
+                cursorArea.style.marginLeft = '-28px';
+            } else {
+                cursorArea.style.top = '111px';
+                cursorArea.style.marginLeft = '-38px';
+            }
+        });
+    </script>
 </body>
 </html>
